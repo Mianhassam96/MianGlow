@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>MianGlow</title>
+		<script src='led_scroller.js'></script>
+		<link rel="stylesheet" type="text/css" href="led_scroller.css" media="all" />
+	</head>
+	<body onload='init();'>
+		<header>
+			<h1 class="title">✨ MianGlow ✨</h1>
+			<div id="colour_container">
+				<input type="radio" name="colour" id="pink" value="Pink" checked />
+				<label for="pink" class="color-label pink">Pink</label>
+		
+				<input type="radio" name="colour" id="blue" value="Blue" />
+				<label for="blue" class="color-label blue">Blue</label>
+			</div>
+		</header>
+		
+		<div id='container'>
+			<input type="text" id='text' value="Enter Your Scrolling Message " />
+			<a id='imgLink' href="javascript:startAnim();"> <img src="go.jpg" alt='Go'/> </a>
+		</div>
+		<canvas id="led" width="1200" height="350"></canvas>
+		<footer>
+			<div class="footer-container">
+				<p>© 2025 <span>MianGlow</span> | Built with ❤️ by <a href="https://github.com/Mianhassam96" target="_blank">MutliMian</a></p>
+			</div>
+		</footer>
+		
+		
+	</body>
+</html>
