@@ -327,6 +327,28 @@ body {
   display: none !important;
 }
 
+/* ---- Balloon float keyframe (used by balloons.js) ---- */
+@keyframes balloonFloat {
+  0%   { transform: translateY(0)   translateX(0)             rotate(-3deg); opacity: 0; }
+  5%   { opacity: 1; }
+  50%  { transform: translateY(-55vh) translateX(var(--sway, 30px)) rotate(3deg); }
+  95%  { opacity: 1; }
+  100% { transform: translateY(-110vh) translateX(0)           rotate(-3deg); opacity: 0; }
+}
+
+/* ---- Cake canvas wrapper ---- */
+.cake-canvas-wrap {
+  width: min(300px, 85vw);
+  aspect-ratio: 1;
+  position: relative;
+}
+
+.cake-canvas-wrap canvas {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-xl);
+}
+
 /* ---- Responsive ---- */
 @media (max-width: 480px) {
   #scene-main { padding-top: 6vh; }
