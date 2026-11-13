@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MianGlow Birthday Creator — coming soon." />
+  <title>MianGlow — Birthday Creator ✨</title>
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <style>
+    .coming-soon-wrap {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: var(--space-8);
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 0%, rgba(212,160,23,0.15) 0%, transparent 60%),
+        var(--color-midnight);
+      gap: var(--space-6);
+    }
+    .coming-soon-wrap .emoji {
+      font-size: 5rem;
+      animation: bounce 2s ease-in-out infinite;
+      filter: drop-shadow(0 0 24px rgba(212,160,23,0.5));
+    }
+    .coming-soon-wrap h1 {
+      font-family: var(--font-display);
+      font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
+      font-weight: 700;
+      margin-bottom: var(--space-2);
+    }
+    .coming-soon-wrap p {
+      font-size: var(--text-lg);
+      color: rgba(255,255,255,0.6);
+      max-width: 480px;
+    }
+    .phase-badge {
+      background: rgba(212,160,23,0.1);
+      border: 1px solid rgba(212,160,23,0.3);
+      border-radius: var(--radius-full);
+      padding: var(--space-2) var(--space-6);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--color-gold);
+      letter-spacing: 0.06em;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-16px); }
+    }
+  </style>
+</head>
+<body>
+  <main class="coming-soon-wrap">
+    <div class="emoji">🎂</div>
+    <span class="phase-badge">Phase 2 — Coming Soon</span>
+    <h1>Birthday Creator<br/><span class="text-gold">is being built.</span></h1>
+    <p>The full creation wizard — themes, animations, photos, shareable links and downloads — is on its way. Check back soon.</p>
+    <a href="index.html" class="btn btn-primary" style="margin-top: var(--space-4); padding: var(--space-4) var(--space-10);">
+      ← Back to MianGlow
+    </a>
+  </main>
+</body>
+</html>

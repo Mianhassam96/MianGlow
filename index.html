@@ -1,34 +1,443 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<title>MianGlow</title>
-		<script src='led_scroller.js'></script>
-		<link rel="stylesheet" type="text/css" href="led_scroller.css" media="all" />
-	</head>
-	<body onload='init();'>
-		<header>
-			<h1 class="title">✨ MianGlow✨</h1>
-			<div id="colour_container">
-				<input type="radio" name="colour" id="pink" value="Pink" checked />
-				<label for="pink" class="color-label pink">Pink</label>
-		
-				<input type="radio" name="colour" id="blue" value="Blue" />
-				<label for="blue" class="color-label blue">Blue</label>
-			</div>
-		</header>
-		
-		<div id='container'>
-			<input type="text" id='text' value="Enter Your Scrolling Message " />
-			<a id='imgLink' href="javascript:startAnim();"> <img src="go.jpg" alt='Go'/> </a>
-		</div>
-		<canvas id="led" width="1200" height="350"></canvas>
-		<footer>
-			<div class="footer-container">
-				<p>© 2025 <span>MianGlow</span> | Built with ❤️ by <a href="https://github.com/Mianhassam96" target="_blank">MutliMian</a></p>
-			</div>
-		</footer>
-		
-		
-	</body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MianGlow — Create a personalized animated birthday surprise. Choose a theme, add their name and your message, then share a beautiful glowing link or download a greeting." />
+  <meta property="og:title" content="MianGlow — Make Their Birthday Unforgettable" />
+  <meta property="og:description" content="Create a personalized animated birthday surprise and share it in seconds." />
+  <meta property="og:type" content="website" />
+  <title>MianGlow — Make Their Birthday Unforgettable ✨</title>
+
+  <!-- Design tokens & global styles -->
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/landing.css" />
+
+  <!-- Google Fonts preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body class="bg-gradient-radial">
+
+  <!-- ============================================================
+       NAV
+  ============================================================ -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="/" class="nav-logo" aria-label="MianGlow home">
+        <span class="logo-icon">✨</span>
+        <span class="text-gold">MianGlow</span>
+      </a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="#themes">Themes</a></li>
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <a href="create.html" class="btn btn-primary" aria-label="Create a birthday surprise">
+          🎂 Create Surprise
+        </a>
+      </div>
+
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section class="hero" aria-labelledby="hero-headline">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-stars" aria-hidden="true"></div>
+
+    <div class="container hero-content">
+      <!-- Left: text -->
+      <div class="hero-text">
+        <div class="hero-badge" role="note">
+          🎉 Birthday Surprise Creator
+        </div>
+
+        <h1 class="hero-headline" id="hero-headline">
+          Make Their Birthday<br />
+          <span class="text-gold">Unforgettable.</span>
+        </h1>
+
+        <p class="hero-subline">
+          Create a personalized animated birthday experience. Add their name, write your message, choose a beautiful theme — then share a glowing link or download their greeting.
+        </p>
+
+        <div class="hero-actions">
+          <a href="create.html" class="btn btn-primary">
+            🎂 Create a Birthday Surprise
+          </a>
+          <a href="#themes" class="btn btn-ghost">
+            See Themes ↓
+          </a>
+        </div>
+
+        <div class="hero-social-proof">
+          <div class="proof-avatars" aria-hidden="true">
+            <div class="proof-avatar">M</div>
+            <div class="proof-avatar">S</div>
+            <div class="proof-avatar">J</div>
+            <div class="proof-avatar">A</div>
+          </div>
+          <p class="proof-text">
+            <strong>Beautiful, personal & free</strong> — no account needed
+          </p>
+        </div>
+      </div>
+
+      <!-- Right: live phone demo -->
+      <div class="hero-demo" aria-hidden="true">
+        <div class="demo-badge-floating left">🎈 Shareable link</div>
+        <div class="demo-badge-floating right">📥 Download too</div>
+
+        <div class="demo-phone">
+          <div class="demo-screen">
+            <div class="demo-confetti-layer"></div>
+            <div class="demo-candles">🕯️🕯️🕯️</div>
+            <div class="demo-cake">🎂</div>
+            <div class="demo-name" id="demo-name-display">Alex</div>
+            <p class="demo-msg">Happy Birthday! 🎉<br/>Wishing you an amazing day! ✨</p>
+            <span class="demo-sparkles">✨</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       HOW IT WORKS
+  ============================================================ -->
+  <section class="how-it-works" id="how-it-works" aria-labelledby="how-heading">
+    <div class="container">
+      <div class="section-label reveal">How it works</div>
+      <h2 id="how-heading" class="reveal">Three steps to a glowing surprise</h2>
+      <p class="section-subtitle reveal">From idea to shareable birthday experience in minutes.</p>
+
+      <div class="steps-grid">
+        <div class="step-card reveal">
+          <div class="step-num">1</div>
+          <span class="step-icon">🎨</span>
+          <h3>Choose &amp; Personalize</h3>
+          <p>Pick from four beautiful birthday themes. Add the recipient's name, your personal message, and optional photos.</p>
+        </div>
+
+        <div class="step-card reveal delay-200">
+          <div class="step-num">2</div>
+          <span class="step-icon">✨</span>
+          <h3>Preview the Magic</h3>
+          <p>See exactly what the recipient will experience — animated name reveal, cake, confetti and your personal message.</p>
+        </div>
+
+        <div class="step-card reveal delay-400">
+          <div class="step-num">3</div>
+          <span class="step-icon">🚀</span>
+          <h3>Share or Download</h3>
+          <p>Copy a shareable link to send via WhatsApp, Instagram or any channel — or download a standalone greeting file.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       LIVE DEMO
+  ============================================================ -->
+  <section class="demo-section" id="demo" aria-labelledby="demo-heading">
+    <div class="container">
+      <div class="section-label reveal">Try it now</div>
+      <h2 id="demo-heading" class="reveal">See your name <span class="text-gold">glow</span></h2>
+      <p class="section-subtitle reveal">Type a name below and watch the magic happen.</p>
+
+      <div class="demo-container reveal">
+        <div class="demo-top-bar" aria-hidden="true">
+          <span></span><span></span><span></span>
+          <span class="demo-url">mianglow.app/view#alex-birthday</span>
+        </div>
+        <div class="demo-stage">
+          <div id="demo-name-display" class="typewriter-cursor" role="text" aria-live="polite" aria-label="Name display">Alex</div>
+          <p style="color: rgba(255,255,255,0.5); font-size: var(--text-sm);">Happy Birthday! 🎉 Wishing you an amazing year ✨</p>
+          <div class="demo-input-row">
+            <input
+              type="text"
+              id="demo-input"
+              class="demo-input"
+              placeholder="Type a name…"
+              maxlength="30"
+              aria-label="Enter a name to preview"
+            />
+            <a href="create.html" class="btn btn-primary" style="white-space:nowrap;">Create Mine →</a>
+          </div>
+          <span class="demo-sparkles" aria-hidden="true">✨</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       THEMES
+  ============================================================ -->
+  <section class="themes-section" id="themes" aria-labelledby="themes-heading">
+    <div class="container">
+      <div class="section-label reveal">Birthday Themes</div>
+      <h2 id="themes-heading" class="reveal">Four beautiful experiences</h2>
+      <p class="section-subtitle reveal">Each theme has its own animations, colors, and mood. Coming in Phase 2.</p>
+
+      <div class="themes-grid" role="list">
+
+        <article class="theme-card golden reveal" role="listitem" aria-label="Golden Celebration theme">
+          <div class="theme-preview">
+            <span class="theme-tag">Flagship ⭐</span>
+            <div class="theme-emoji">🏆</div>
+            <h3>Golden Celebration</h3>
+            <p>Cinematic black &amp; gold. Golden particles, elegant name reveal and a beautiful animated cake.</p>
+            <div class="theme-hover-overlay">
+              <span class="btn btn-outline" style="pointer-events:none;">Coming Soon</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="theme-card dreamy reveal delay-100" role="listitem" aria-label="Dreamy Birthday theme">
+          <div class="theme-preview">
+            <div class="theme-emoji">💖</div>
+            <h3>Dreamy Birthday</h3>
+            <p>Soft purples and pinks, floating hearts, gentle lights and romantic photo memories.</p>
+            <div class="theme-hover-overlay">
+              <span class="btn btn-outline" style="pointer-events:none;">Coming Soon</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="theme-card party reveal delay-200" role="listitem" aria-label="Party Blast theme">
+          <div class="theme-preview">
+            <div class="theme-emoji">🎊</div>
+            <h3>Party Blast</h3>
+            <p>Colorful balloons, bursting confetti, bright cake and playful energetic animations.</p>
+            <div class="theme-hover-overlay">
+              <span class="btn btn-outline" style="pointer-events:none;">Coming Soon</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="theme-card neon reveal delay-300" role="listitem" aria-label="Neon Night theme">
+          <div class="theme-preview">
+            <div class="theme-emoji">💜</div>
+            <h3>Neon Night</h3>
+            <p>Glowing text, neon outlines, animated light trails and a modern digital celebration vibe.</p>
+            <div class="theme-hover-overlay">
+              <span class="btn btn-outline" style="pointer-events:none;">Coming Soon</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FEATURES
+  ============================================================ -->
+  <section class="features-section" id="features" aria-labelledby="features-heading">
+    <div class="container">
+      <div class="section-label reveal">What you get</div>
+      <h2 id="features-heading" class="reveal">Everything a great birthday surprise needs</h2>
+      <p class="section-subtitle reveal">Built to feel personal, run fast on mobile, and require zero account setup.</p>
+
+      <div class="features-grid">
+        <div class="feature-item reveal">
+          <div class="feature-icon-wrap">🎂</div>
+          <h3>Animated Birthday Cake</h3>
+          <p>An interactive cake with animated candles the recipient can tap to blow out.</p>
+        </div>
+
+        <div class="feature-item reveal delay-100">
+          <div class="feature-icon-wrap">✨</div>
+          <h3>Glowing Name Reveal</h3>
+          <p>A cinematic reveal animation that makes the recipient's name shine in golden light.</p>
+        </div>
+
+        <div class="feature-item reveal delay-200">
+          <div class="feature-icon-wrap">🎈</div>
+          <h3>Confetti &amp; Balloons</h3>
+          <p>Rising balloons and bursting confetti fill the screen for a joyful celebration effect.</p>
+        </div>
+
+        <div class="feature-item reveal">
+          <div class="feature-icon-wrap">📱</div>
+          <h3>Mobile-First Experience</h3>
+          <p>Designed to open perfectly in WhatsApp's in-app browser and any mobile device.</p>
+        </div>
+
+        <div class="feature-item reveal delay-100">
+          <div class="feature-icon-wrap">🔗</div>
+          <h3>Shareable Link</h3>
+          <p>Share a unique link via WhatsApp, Instagram or any channel — no app required to view.</p>
+        </div>
+
+        <div class="feature-item reveal delay-200">
+          <div class="feature-icon-wrap">📥</div>
+          <h3>Downloadable Greeting</h3>
+          <p>Download a self-contained HTML file that works offline and can be sent as an attachment.</p>
+        </div>
+
+        <div class="feature-item reveal">
+          <div class="feature-icon-wrap">🖼️</div>
+          <h3>Photo Memories</h3>
+          <p>Upload photos to create a beautiful gallery that plays as part of the birthday experience.</p>
+        </div>
+
+        <div class="feature-item reveal delay-100">
+          <div class="feature-icon-wrap">🎨</div>
+          <h3>Four Distinct Themes</h3>
+          <p>Golden, Dreamy, Party Blast and Neon Night — each with its own personality and animations.</p>
+        </div>
+
+        <div class="feature-item reveal delay-200">
+          <div class="feature-icon-wrap">🔒</div>
+          <h3>No Account Needed</h3>
+          <p>Create and share without signing up. Everything runs in the browser — no data stored.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA
+  ============================================================ -->
+  <section class="cta-section" aria-labelledby="cta-heading">
+    <div class="container">
+      <div class="section-label reveal">Ready?</div>
+      <h2 id="cta-heading" class="reveal">
+        Make their moment <span class="text-gold">glow.</span>
+      </h2>
+      <p class="reveal delay-100">
+        It takes about two minutes. Free, no account required, beautiful on any device.
+      </p>
+      <div class="reveal delay-200">
+        <a href="create.html" class="btn btn-primary" style="font-size: var(--text-lg); padding: var(--space-5) var(--space-16);">
+          🎂 Create a Birthday Surprise
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FAQ
+  ============================================================ -->
+  <section class="faq-section container" id="faq" aria-labelledby="faq-heading">
+    <h2 id="faq-heading" class="reveal">Questions &amp; answers</h2>
+
+    <div class="faq-item reveal">
+      <button class="faq-question" aria-expanded="false">
+        Is MianGlow free to use?
+        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="faq-answer" role="region">
+        Yes — creating a birthday surprise, sharing a link, and downloading a greeting are all free. Premium themes may be introduced later, but the core experience will always be free.
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-question" aria-expanded="false">
+        Does the recipient need an account or app?
+        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="faq-answer" role="region">
+        No. The recipient just taps your link and the birthday experience opens directly in their browser — no account, no app installation, no sign-up required.
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-question" aria-expanded="false">
+        Can I share it on WhatsApp?
+        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="faq-answer" role="region">
+        Yes. MianGlow is designed to open beautifully in WhatsApp's in-app browser. Just copy the link and paste it into any chat.
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-question" aria-expanded="false">
+        What is the downloadable greeting?
+        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="faq-answer" role="region">
+        It's a self-contained HTML file that includes everything — animations, photos, and your message. The recipient can open it in any modern browser without an internet connection.
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-question" aria-expanded="false">
+        Who can see my link?
+        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="faq-answer" role="region">
+        Anyone who has the link can open the birthday experience. The name and message are encoded in the link itself — no server stores them. Share your link only with the person you intend.
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-question" aria-expanded="false">
+        Will there be more celebrations beyond birthdays?
+        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="faq-answer" role="region">
+        Birthdays first. We want to make that experience genuinely excellent before expanding to anniversaries, weddings, graduations and other occasions.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="nav-logo">
+            <span class="logo-icon">✨</span>
+            <span class="text-gold">MianGlow</span>
+          </div>
+          <p>Make their moment glow. Personalized animated birthday surprises — shareable, downloadable, and free.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="create.html">Create a Surprise</a></li>
+            <li><a href="#themes">Birthday Themes</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how-it-works">How it Works</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Links</h4>
+          <ul>
+            <li><a href="https://github.com/Mianhassam96/MianGlow" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://github.com/Mianhassam96" target="_blank" rel="noopener">MultiMian</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 <a href="https://github.com/Mianhassam96/MianGlow" target="_blank" rel="noopener">MianGlow</a> · Built with ❤️ by <a href="https://github.com/Mianhassam96" target="_blank" rel="noopener">MultiMian</a></p>
+        <p style="color: rgba(255,255,255,0.2); font-size: var(--text-xs);">No account required · Your data stays in your browser</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+</body>
 </html>
