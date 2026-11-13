@@ -351,6 +351,7 @@
                     Copy
                   </button>
                 </div>
+                <div id="share-link-warn" style="display:none;margin-top:var(--space-2);font-size:var(--text-xs);color:var(--color-gold);"></div>
               </div>
             </div>
 
@@ -371,11 +372,21 @@
               <div class="final-action-icon blue">📥</div>
               <div class="final-action-info">
                 <h3>Download greeting</h3>
-                <p>Save a standalone HTML file — works offline and can be sent as an attachment.</p>
+                <p>Save a standalone HTML file — works offline and can be sent as an attachment. Photos are included.</p>
               </div>
               <button class="btn btn-ghost" id="btn-download" style="font-size:var(--text-sm);padding:var(--space-3) var(--space-5);">
                 Download
               </button>
+            </div>
+
+            <!-- Native share (mobile only, hidden on desktop) -->
+            <div class="final-action-card" id="btn-native-share" style="display:none;cursor:pointer;" role="button" tabindex="0">
+              <div class="final-action-icon gold">📤</div>
+              <div class="final-action-info">
+                <h3>Share via…</h3>
+                <p>Use your phone's native share sheet to send via any app.</p>
+              </div>
+              <span class="btn btn-primary" style="font-size:var(--text-sm);padding:var(--space-3) var(--space-5);pointer-events:none;">Share ↗</span>
             </div>
 
           </div>
@@ -431,8 +442,10 @@
   <!-- Toast notification -->
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <!-- Scripts — data model first, then creator -->
+  <!-- Scripts -->
   <script src="js/data-model.js"></script>
+  <script src="js/share.js"></script>
+  <script src="js/export.js"></script>
   <script src="js/creator.js"></script>
 
 </body>

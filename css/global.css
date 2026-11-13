@@ -194,3 +194,61 @@ button {
   }
   html { scroll-behavior: auto; }
 }
+
+/* ============================================
+   Phase 5 — Mobile QA, Accessibility, Performance
+   ============================================ */
+
+/* ---- Touch targets (mobile) ---- */
+@media (hover: none) and (pointer: coarse) {
+  .btn { min-height: 48px; padding-top: var(--space-3); padding-bottom: var(--space-3); }
+  .faq-question { min-height: 48px; }
+  .effect-toggle-card, .theme-option-card { min-height: 72px; }
+}
+
+/* ---- Prevent text size inflate on iOS ---- */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+/* ---- Safe area insets (iPhone notch) ---- */
+.creator-topbar, .nav { padding-left: max(var(--space-6), env(safe-area-inset-left)); padding-right: max(var(--space-6), env(safe-area-inset-right)); }
+.creator-body, .container { padding-left: max(var(--space-6), env(safe-area-inset-left)); padding-right: max(var(--space-6), env(safe-area-inset-right)); }
+
+/* ---- Loading skeleton ---- */
+.skeleton {
+  background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.04) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-md);
+}
+
+/* ---- Error state ---- */
+.error-banner {
+  background: rgba(255,107,107,0.12);
+  border: 1px solid rgba(255,107,107,0.4);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-5);
+  font-size: var(--text-sm);
+  color: var(--color-coral);
+  display: none;
+  gap: var(--space-3);
+  align-items: center;
+}
+.error-banner.visible { display: flex; }
+
+/* ---- Smooth image load ---- */
+img { transition: opacity var(--transition-base); }
+img[loading] { opacity: 0; }
+img.loaded   { opacity: 1; }
+
+/* ---- Overflow fix on very small screens ---- */
+@media (max-width: 360px) {
+  .btn { font-size: var(--text-sm); padding-left: var(--space-5); padding-right: var(--space-5); }
+  .hero-headline { font-size: var(--text-3xl); }
+  .step-heading h2 { font-size: var(--text-2xl); }
+}
+
+/* ---- High contrast mode ---- */
+@media (forced-colors: active) {
+  .btn-primary { background: ButtonText; color: ButtonFace; border: 2px solid ButtonText; }
+  .text-gold { -webkit-text-fill-color: unset; color: ButtonText; background: none; }
+}
