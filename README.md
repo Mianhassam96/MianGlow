@@ -77,7 +77,6 @@ MianGlow/
 ├── sitemap.xml         ← SEO sitemap
 ├── robots.txt          ← Crawler rules
 ├── .nojekyll           ← GitHub Pages bypass
-│
 ├── assets/
 │   ├── images/
 │   │   └── og-image.svg    ← Open Graph preview image
