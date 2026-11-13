@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="You have a birthday surprise waiting for you on MianGlow!" />
+  <title>✨ You have a birthday surprise!</title>
+
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/themes.css" />
+  <link rel="stylesheet" href="css/viewer.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+
+  <!-- Canvas for particle effects -->
+  <canvas id="fx-canvas" aria-hidden="true"></canvas>
+
+  <!-- ============================================================
+       SCENE 1 — Invitation (before tap)
+  ============================================================ -->
+  <div class="scene" id="scene-invite" aria-label="Birthday invitation">
+    <div class="invite-glow" aria-hidden="true"></div>
+    <div class="invite-content">
+      <div class="invite-gift" aria-hidden="true">🎁</div>
+      <h1 class="invite-headline">Someone has a<br/><span class="text-gold">surprise for you.</span></h1>
+      <p class="invite-sub">Tap to open your birthday surprise ✨</p>
+      <button class="btn btn-primary invite-btn" id="btn-open" aria-label="Open your birthday surprise">
+        Open Surprise 🎉
+      </button>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SCENE 2 — Full birthday experience
+  ============================================================ -->
+  <div class="scene hidden" id="scene-main" aria-label="Birthday experience">
+
+    <!-- Balloon layer -->
+    <div class="balloon-layer" id="balloon-layer" aria-hidden="true"></div>
+
+    <!-- Main content -->
+    <div class="bday-content" id="bday-content">
+
+      <!-- Name reveal -->
+      <div class="name-reveal-wrap" id="name-reveal-wrap">
+        <p class="name-reveal-label">Happy Birthday,</p>
+        <h1 class="name-reveal" id="name-display" aria-live="assertive"></h1>
+        <div class="name-sparkles" aria-hidden="true">✨</div>
+      </div>
+
+      <!-- Cake -->
+      <div class="cake-wrap" id="cake-wrap">
+        <div class="cake-emoji" id="cake-emoji" role="button" tabindex="0" aria-label="Tap to blow out the candles">🎂</div>
+        <div class="candles-blown hidden" id="candles-blown" aria-hidden="true">🎊</div>
+        <p class="cake-hint" id="cake-hint">Tap the cake to blow out the candles!</p>
+      </div>
+
+      <!-- Message -->
+      <div class="message-wrap hidden" id="message-wrap">
+        <div class="message-card">
+          <p class="message-text" id="message-text"></p>
+          <p class="sender-text" id="sender-text"></p>
+        </div>
+      </div>
+
+      <!-- Photos -->
+      <div class="photos-wrap hidden" id="photos-wrap">
+        <div class="photos-grid" id="photos-grid"></div>
+      </div>
+
+      <!-- Finale -->
+      <div class="finale-wrap hidden" id="finale-wrap">
+        <div class="finale-emoji" aria-hidden="true">🥳</div>
+        <p class="finale-text">Make a wish! 🌟</p>
+        <div class="finale-actions">
+          <button class="btn btn-primary" id="btn-replay">↺ Replay</button>
+          <a href="index.html" class="btn btn-ghost" style="font-size:var(--text-sm);">
+            Create yours ✨
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Error fallback -->
+  <div class="scene hidden" id="scene-error" aria-label="Error">
+    <div class="error-content">
+      <div style="font-size:4rem;margin-bottom:var(--space-4)">😕</div>
+      <h2 style="font-family:var(--font-display);font-size:var(--text-3xl);margin-bottom:var(--space-4);">Link not found</h2>
+      <p style="color:rgba(255,255,255,0.6);margin-bottom:var(--space-8);">This birthday link may be invalid or incomplete.</p>
+      <a href="index.html" class="btn btn-primary">Create a birthday surprise →</a>
+    </div>
+  </div>
+
+  <script src="js/data-model.js"></script>
+  <script src="js/viewer.js"></script>
+</body>
+</html>

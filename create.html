@@ -3,66 +3,437 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="MianGlow Birthday Creator — coming soon." />
-  <title>MianGlow — Birthday Creator ✨</title>
+  <meta name="description" content="Create a personalized animated birthday surprise on MianGlow. Choose a theme, add a name and message, upload photos, and share a glowing link." />
+  <title>MianGlow — Create a Birthday Surprise ✨</title>
+
   <link rel="stylesheet" href="css/tokens.css" />
   <link rel="stylesheet" href="css/global.css" />
   <link rel="stylesheet" href="css/animations.css" />
-  <style>
-    .coming-soon-wrap {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: var(--space-8);
-      background:
-        radial-gradient(ellipse 70% 60% at 50% 0%, rgba(212,160,23,0.15) 0%, transparent 60%),
-        var(--color-midnight);
-      gap: var(--space-6);
-    }
-    .coming-soon-wrap .emoji {
-      font-size: 5rem;
-      animation: bounce 2s ease-in-out infinite;
-      filter: drop-shadow(0 0 24px rgba(212,160,23,0.5));
-    }
-    .coming-soon-wrap h1 {
-      font-family: var(--font-display);
-      font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
-      font-weight: 700;
-      margin-bottom: var(--space-2);
-    }
-    .coming-soon-wrap p {
-      font-size: var(--text-lg);
-      color: rgba(255,255,255,0.6);
-      max-width: 480px;
-    }
-    .phase-badge {
-      background: rgba(212,160,23,0.1);
-      border: 1px solid rgba(212,160,23,0.3);
-      border-radius: var(--radius-full);
-      padding: var(--space-2) var(--space-6);
-      font-size: var(--text-sm);
-      font-weight: 600;
-      color: var(--color-gold);
-      letter-spacing: 0.06em;
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(-16px); }
-    }
-  </style>
+  <link rel="stylesheet" href="css/themes.css" />
+  <link rel="stylesheet" href="css/creator.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 </head>
 <body>
-  <main class="coming-soon-wrap">
-    <div class="emoji">🎂</div>
-    <span class="phase-badge">Phase 2 — Coming Soon</span>
-    <h1>Birthday Creator<br/><span class="text-gold">is being built.</span></h1>
-    <p>The full creation wizard — themes, animations, photos, shareable links and downloads — is on its way. Check back soon.</p>
-    <a href="index.html" class="btn btn-primary" style="margin-top: var(--space-4); padding: var(--space-4) var(--space-10);">
-      ← Back to MianGlow
+
+  <!-- ============================================================
+       TOP BAR
+  ============================================================ -->
+  <header class="creator-topbar" role="banner">
+    <a href="index.html" class="nav-logo" aria-label="MianGlow home">
+      <span class="logo-icon">✨</span>
+      <span class="text-gold">MianGlow</span>
     </a>
+
+    <div class="topbar-right">
+      <span style="font-size:var(--text-sm);color:var(--color-muted);">
+        Birthday Creator
+      </span>
+      <a href="index.html" class="btn btn-ghost" style="padding:var(--space-2) var(--space-5);font-size:var(--text-sm);">
+        ← Back
+      </a>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       PROGRESS STEPPER
+  ============================================================ -->
+  <nav class="stepper" aria-label="Creator steps">
+    <div class="step-dot active" data-step="1">
+      <div class="step-dot-circle">1</div>
+      <span class="step-dot-label">Who</span>
+    </div>
+    <div class="step-dot" data-step="2">
+      <div class="step-dot-circle">2</div>
+      <span class="step-dot-label">Message</span>
+    </div>
+    <div class="step-dot" data-step="3">
+      <div class="step-dot-circle">3</div>
+      <span class="step-dot-label">Theme</span>
+    </div>
+    <div class="step-dot" data-step="4">
+      <div class="step-dot-circle">4</div>
+      <span class="step-dot-label">Effects</span>
+    </div>
+    <div class="step-dot" data-step="5">
+      <div class="step-dot-circle">5</div>
+      <span class="step-dot-label">Share</span>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       MAIN BODY — form + preview
+  ============================================================ -->
+  <main class="creator-page">
+    <div class="creator-body">
+
+      <!-- ======================================================
+           FORM COLUMN
+      ====================================================== -->
+      <div class="creator-form">
+
+        <!-- STEP 1 — Who is it for? -->
+        <section class="step-panel active" id="step-1" aria-labelledby="step1-heading">
+          <div class="step-heading">
+            <h2 id="step1-heading">Who is this for? 🎂</h2>
+            <p>Start with the person who deserves the surprise.</p>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="input-recipient">
+              Recipient's name <span class="required">*</span>
+            </label>
+            <input
+              type="text"
+              id="input-recipient"
+              class="form-input"
+              placeholder="e.g. Sara, Jordan, Mum…"
+              maxlength="40"
+              autocomplete="off"
+              spellcheck="false"
+              aria-required="true"
+              aria-describedby="error-recipient"
+            />
+            <div class="form-error" id="error-recipient" role="alert"></div>
+            <p class="form-hint">This name will glow in the birthday experience. Up to 40 characters.</p>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="input-sender">
+              Your name <span class="optional">optional</span>
+            </label>
+            <input
+              type="text"
+              id="input-sender"
+              class="form-input"
+              placeholder="e.g. Alex, Your Secret Admirer…"
+              maxlength="40"
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <p class="form-hint">Shown as "— from [your name]" at the end.</p>
+          </div>
+
+          <div class="step-nav">
+            <div></div>
+            <button class="btn btn-primary" data-next aria-label="Continue to message step">
+              Next: Message →
+            </button>
+          </div>
+        </section>
+
+        <!-- STEP 2 — Birthday message -->
+        <section class="step-panel" id="step-2" aria-labelledby="step2-heading">
+          <div class="step-heading">
+            <h2 id="step2-heading">Write your message 💌</h2>
+            <p>A personal message makes it feel real. Even one line is enough.</p>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="input-message">
+              Birthday message <span class="optional">optional</span>
+            </label>
+            <textarea
+              id="input-message"
+              class="form-textarea"
+              placeholder="e.g. Wishing you an incredible year ahead. You deserve all the happiness in the world! 🌟"
+              maxlength="300"
+              spellcheck="true"
+              aria-describedby="char-count"
+            ></textarea>
+            <span class="char-count" id="char-count" aria-live="polite">0 / 300</span>
+            <p class="form-hint">Shown as a personal message in the experience. Leave blank for a default wish.</p>
+          </div>
+
+          <div class="step-nav">
+            <button class="btn btn-ghost" data-prev>← Back</button>
+            <button class="btn btn-primary" data-next>Next: Theme →</button>
+          </div>
+        </section>
+
+        <!-- STEP 3 — Theme & Photos -->
+        <section class="step-panel" id="step-3" aria-labelledby="step3-heading">
+          <div class="step-heading">
+            <h2 id="step3-heading">Choose a theme 🎨</h2>
+            <p>Each theme has its own mood and animations.</p>
+          </div>
+
+          <div class="form-group">
+            <span class="form-label">Birthday theme <span class="required">*</span></span>
+            <div class="theme-picker" role="radiogroup" aria-label="Choose birthday theme">
+
+              <label class="theme-option golden">
+                <input type="radio" name="theme" value="golden" checked aria-label="Golden Celebration" />
+                <div class="theme-option-card">
+                  <div class="theme-check">✓</div>
+                  <div class="theme-option-emoji">🏆</div>
+                  <div class="theme-option-name">Golden Celebration</div>
+                  <div class="theme-option-desc">Cinematic black &amp; gold — the flagship theme</div>
+                </div>
+              </label>
+
+              <label class="theme-option dreamy">
+                <input type="radio" name="theme" value="dreamy" aria-label="Dreamy Birthday" />
+                <div class="theme-option-card">
+                  <div class="theme-check">✓</div>
+                  <div class="theme-option-emoji">💖</div>
+                  <div class="theme-option-name">Dreamy Birthday</div>
+                  <div class="theme-option-desc">Soft purples, hearts and romantic vibes</div>
+                </div>
+              </label>
+
+              <label class="theme-option party">
+                <input type="radio" name="theme" value="party" aria-label="Party Blast" />
+                <div class="theme-option-card">
+                  <div class="theme-check">✓</div>
+                  <div class="theme-option-emoji">🎊</div>
+                  <div class="theme-option-name">Party Blast</div>
+                  <div class="theme-option-desc">Colorful, energetic and full of confetti</div>
+                </div>
+              </label>
+
+              <label class="theme-option neon">
+                <input type="radio" name="theme" value="neon" aria-label="Neon Night" />
+                <div class="theme-option-card">
+                  <div class="theme-check">✓</div>
+                  <div class="theme-option-emoji">💜</div>
+                  <div class="theme-option-name">Neon Night</div>
+                  <div class="theme-option-desc">Glowing neon, digital and electric</div>
+                </div>
+              </label>
+
+            </div>
+          </div>
+
+          <!-- Photos -->
+          <div class="form-group" style="margin-top:var(--space-8)">
+            <span class="form-label">
+              Add photos <span class="optional">optional — up to 6</span>
+            </span>
+            <div class="photo-upload-zone" id="upload-zone" role="button" tabindex="0" aria-label="Upload photos">
+              <input
+                type="file"
+                id="photo-input"
+                accept="image/*"
+                multiple
+                aria-label="Select photos to upload"
+              />
+              <div class="upload-icon">📷</div>
+              <div class="upload-text">Drop photos here or click to browse</div>
+              <div class="upload-subtext">JPG, PNG, WEBP · Max 6 photos · Auto-resized</div>
+            </div>
+            <div class="photo-grid" id="photo-grid"></div>
+          </div>
+
+          <div class="step-nav">
+            <button class="btn btn-ghost" data-prev>← Back</button>
+            <button class="btn btn-primary" data-next>Next: Effects →</button>
+          </div>
+        </section>
+
+        <!-- STEP 4 — Animation effects -->
+        <section class="step-panel" id="step-4" aria-labelledby="step4-heading">
+          <div class="step-heading">
+            <h2 id="step4-heading">Choose animations ✨</h2>
+            <p>Select the effects that will play when the recipient opens their surprise.</p>
+          </div>
+
+          <div class="form-group">
+            <span class="form-label">Animation effects</span>
+            <div class="effects-grid" role="group" aria-label="Choose animation effects">
+
+              <label class="effect-toggle">
+                <input type="checkbox" name="effect" value="nameReveal" />
+                <div class="effect-toggle-card">
+                  <span class="effect-icon">✨</span>
+                  <div class="effect-info">
+                    <div class="effect-name">Name Reveal</div>
+                    <div class="effect-desc">Glowing cinematic name animation</div>
+                  </div>
+                  <div class="effect-checkbox"></div>
+                </div>
+              </label>
+
+              <label class="effect-toggle">
+                <input type="checkbox" name="effect" value="cake" />
+                <div class="effect-toggle-card">
+                  <span class="effect-icon">🎂</span>
+                  <div class="effect-info">
+                    <div class="effect-name">Animated Cake</div>
+                    <div class="effect-desc">Cake with tappable candles</div>
+                  </div>
+                  <div class="effect-checkbox"></div>
+                </div>
+              </label>
+
+              <label class="effect-toggle">
+                <input type="checkbox" name="effect" value="confetti" />
+                <div class="effect-toggle-card">
+                  <span class="effect-icon">🎉</span>
+                  <div class="effect-info">
+                    <div class="effect-name">Confetti</div>
+                    <div class="effect-desc">Colourful bursting confetti</div>
+                  </div>
+                  <div class="effect-checkbox"></div>
+                </div>
+              </label>
+
+              <label class="effect-toggle">
+                <input type="checkbox" name="effect" value="balloons" />
+                <div class="effect-toggle-card">
+                  <span class="effect-icon">🎈</span>
+                  <div class="effect-info">
+                    <div class="effect-name">Balloons</div>
+                    <div class="effect-desc">Floating balloons rising up</div>
+                  </div>
+                  <div class="effect-checkbox"></div>
+                </div>
+              </label>
+
+              <label class="effect-toggle">
+                <input type="checkbox" name="effect" value="fireworks" />
+                <div class="effect-toggle-card">
+                  <span class="effect-icon">🎆</span>
+                  <div class="effect-info">
+                    <div class="effect-name">Fireworks</div>
+                    <div class="effect-desc">Colourful firework bursts</div>
+                  </div>
+                  <div class="effect-checkbox"></div>
+                </div>
+              </label>
+
+              <label class="effect-toggle">
+                <input type="checkbox" name="effect" value="stars" />
+                <div class="effect-toggle-card">
+                  <span class="effect-icon">⭐</span>
+                  <div class="effect-info">
+                    <div class="effect-name">Star Shower</div>
+                    <div class="effect-desc">Twinkling star particles</div>
+                  </div>
+                  <div class="effect-checkbox"></div>
+                </div>
+              </label>
+
+            </div>
+          </div>
+
+          <div class="step-nav">
+            <button class="btn btn-ghost" data-prev>← Back</button>
+            <button class="btn btn-primary" data-next>Preview &amp; Share →</button>
+          </div>
+        </section>
+
+        <!-- STEP 5 — Share & Download -->
+        <section class="step-panel" id="step-5" aria-labelledby="step5-heading">
+          <div class="step-heading">
+            <h2 id="step5-heading">Your surprise is ready! 🎉</h2>
+            <p>Share the link with <strong id="summary-name">your friend</strong> or download their greeting.</p>
+          </div>
+
+          <div class="final-actions">
+
+            <!-- Share link -->
+            <div class="final-action-card">
+              <div class="final-action-icon gold">🔗</div>
+              <div class="final-action-info">
+                <h3>Share a link</h3>
+                <p>Send via WhatsApp, Instagram, iMessage — opens directly in any browser.</p>
+                <div class="share-link-box" style="margin-top:var(--space-3)">
+                  <input
+                    type="text"
+                    id="share-link-value"
+                    class="share-link-input"
+                    readonly
+                    aria-label="Shareable birthday link"
+                  />
+                  <button class="btn btn-outline" id="btn-copy-link" style="padding:var(--space-3) var(--space-5);font-size:var(--text-sm);">
+                    Copy
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- WhatsApp -->
+            <div class="final-action-card" style="cursor:pointer" id="btn-whatsapp" role="button" tabindex="0">
+              <div class="final-action-icon green">💬</div>
+              <div class="final-action-info">
+                <h3>Send via WhatsApp</h3>
+                <p>Opens WhatsApp with the link and a pre-written message ready to send.</p>
+              </div>
+              <button class="btn btn-primary" style="font-size:var(--text-sm);padding:var(--space-3) var(--space-5);pointer-events:none;">
+                Open ↗
+              </button>
+            </div>
+
+            <!-- Download -->
+            <div class="final-action-card">
+              <div class="final-action-icon blue">📥</div>
+              <div class="final-action-info">
+                <h3>Download greeting</h3>
+                <p>Save a standalone HTML file — works offline and can be sent as an attachment.</p>
+              </div>
+              <button class="btn btn-ghost" id="btn-download" style="font-size:var(--text-sm);padding:var(--space-3) var(--space-5);">
+                Download
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Privacy note -->
+          <p style="margin-top:var(--space-6);font-size:var(--text-xs);color:var(--color-muted);line-height:1.7;">
+            🔒 <strong style="color:rgba(255,255,255,0.5)">Privacy:</strong>
+            Your name and message are encoded directly in the link — nothing is stored on a server.
+            Anyone who has the link can view the birthday experience.
+          </p>
+
+          <div class="step-nav">
+            <button class="btn btn-ghost" data-prev>← Edit</button>
+            <a href="index.html" class="btn btn-outline" style="font-size:var(--text-sm);">
+              ✨ Create another
+            </a>
+          </div>
+        </section>
+
+      </div><!-- /creator-form -->
+
+      <!-- ======================================================
+           LIVE PREVIEW COLUMN
+      ====================================================== -->
+      <aside class="preview-panel" aria-label="Live preview">
+        <div class="preview-label">Live preview</div>
+
+        <div class="preview-phone" role="img" aria-label="Preview of birthday experience">
+          <div class="preview-screen theme-golden" id="preview-screen">
+
+            <!-- Confetti overlay -->
+            <div class="preview-confetti-layer" id="preview-confetti" aria-hidden="true"></div>
+
+            <!-- Content -->
+            <div class="preview-emoji" id="preview-emoji" aria-hidden="true">🎂</div>
+            <div class="preview-name theme-golden" id="preview-name" aria-live="polite">Your Name</div>
+            <div class="preview-message" id="preview-message">Happy Birthday! 🎉 Wishing you an amazing day ✨</div>
+            <div class="preview-sender" id="preview-sender"></div>
+            <div class="preview-effects-row" id="preview-effects-row" aria-label="Selected effects"></div>
+
+          </div>
+        </div>
+
+        <!-- Theme label -->
+        <p style="text-align:center;margin-top:var(--space-4);font-size:var(--text-xs);color:var(--color-muted);">
+          Updates live as you edit
+        </p>
+      </aside>
+
+    </div><!-- /creator-body -->
   </main>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Scripts — data model first, then creator -->
+  <script src="js/data-model.js"></script>
+  <script src="js/creator.js"></script>
+
 </body>
 </html>

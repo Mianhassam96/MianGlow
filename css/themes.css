@@ -1,0 +1,68 @@
+/* ============================================
+   MianGlow Theme Variables
+   Applied as data-theme on the viewer/preview
+   ============================================ */
+
+/* ---- Golden Celebration ---- */
+[data-theme="golden"] {
+  --theme-bg-from:     #0a0800;
+  --theme-bg-mid:      #1a1200;
+  --theme-bg-to:       #2d2000;
+  --theme-primary:     #FFD700;
+  --theme-secondary:   #D4A017;
+  --theme-accent:      #F5C842;
+  --theme-text:        #FFF8F0;
+  --theme-subtext:     rgba(247,231,206,0.7);
+  --theme-glow:        rgba(212,160,23,0.5);
+  --theme-particle:    #FFD700;
+  --theme-name-shadow: 0 0 30px rgba(255,215,0,0.6), 0 0 60px rgba(212,160,23,0.3);
+  --theme-cake-emoji:  🎂;
+}
+
+/* ---- Dreamy Birthday ---- */
+[data-theme="dreamy"] {
+  --theme-bg-from:     #0f0a1a;
+  --theme-bg-mid:      #1a0d1a;
+  --theme-bg-to:       #2d1a35;
+  --theme-primary:     #FFB3E8;
+  --theme-secondary:   #FF69B4;
+  --theme-accent:      #E040FB;
+  --theme-text:        #FFF0FF;
+  --theme-subtext:     rgba(255,179,232,0.65);
+  --theme-glow:        rgba(255,105,180,0.5);
+  --theme-particle:    #FF69B4;
+  --theme-name-shadow: 0 0 30px rgba(255,105,180,0.6), 0 0 60px rgba(224,64,251,0.3);
+  --theme-cake-emoji:  🎀;
+}
+
+/* ---- Party Blast ---- */
+[data-theme="party"] {
+  --theme-bg-from:     #0a0a15;
+  --theme-bg-mid:      #0d0d20;
+  --theme-bg-to:       #1a1a35;
+  --theme-primary:     #FFE500;
+  --theme-secondary:   #FF4B8A;
+  --theme-accent:      #4BFF91;
+  --theme-text:        #FFFFFF;
+  --theme-subtext:     rgba(255,255,255,0.7);
+  --theme-glow:        rgba(255,229,0,0.5);
+  --theme-particle:    #FF4B8A;
+  --theme-name-shadow: 0 0 30px rgba(255,229,0,0.6), 0 0 60px rgba(255,75,138,0.3);
+  --theme-cake-emoji:  🎊;
+}
+
+/* ---- Neon Night ---- */
+[data-theme="neon"] {
+  --theme-bg-from:     #060012;
+  --theme-bg-mid:      #0d001a;
+  --theme-bg-to:       #1a003d;
+  --theme-primary:     #00F5FF;
+  --theme-secondary:   #BF00FF;
+  --theme-accent:      #FF00AA;
+  --theme-text:        #E0FFFF;
+  --theme-subtext:     rgba(0,245,255,0.6);
+  --theme-glow:        rgba(0,245,255,0.5);
+  --theme-particle:    #BF00FF;
+  --theme-name-shadow: 0 0 30px rgba(0,245,255,0.7), 0 0 60px rgba(191,0,255,0.4);
+  --theme-cake-emoji:  ⚡;
+}
