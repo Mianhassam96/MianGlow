@@ -209,7 +209,7 @@
   ============================================================ */
   function _updatePreview() {
     var name = state.recipient.trim() || 'Your Name';
-    var EMOJI = { golden: '🎂', dreamy: '🎀', party: '🎊', neon: '⚡' };
+    var EMOJI = { golden: '🎂', dreamy: '🎀', party: '🎊', neon: '⚡', vintage: '🌹', midnight: '🌊', tropical: '🌴', galaxy: '🌌' };
 
     if (previewName)  { previewName.textContent = name; previewName.className = 'preview-name theme-' + state.theme; }
     if (previewMsg)   previewMsg.textContent  = state.message.trim() || 'Happy Birthday! 🎉 Wishing you an amazing day ✨';

@@ -34,7 +34,7 @@ MianGlow.validate = function (state) {
   if (state.message && state.message.length > 300) {
     errors.message = 'Message must be 300 characters or fewer.';
   }
-  if (['golden', 'dreamy', 'party', 'neon'].indexOf(state.theme) === -1) {
+  if (['golden', 'dreamy', 'party', 'neon', 'vintage', 'midnight', 'tropical', 'galaxy'].indexOf(state.theme) === -1) {
     errors.theme = 'Please choose a theme.';
   }
   return { valid: Object.keys(errors).length === 0, errors: errors };

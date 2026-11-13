@@ -10,10 +10,14 @@ window.MianGlow.animations = window.MianGlow.animations || {};
 window.MianGlow.animations.Fireworks = (function () {
 
   var THEME_PALETTES = {
-    golden: ['#FFD700','#FFA500','#FF6B6B','#FFFFFF','#F5C842'],
-    dreamy:  ['#FFB3E8','#FF69B4','#E040FB','#B39DDB','#FFFFFF'],
-    party:   ['#FF4B8A','#4BFF91','#FFE500','#4B9BFF','#FF6B6B','#FFFFFF'],
-    neon:    ['#00F5FF','#BF00FF','#FF00AA','#80FF80','#FFFFFF']
+    golden:   ['#FFD700','#FFA500','#FF6B6B','#FFFFFF','#F5C842'],
+    dreamy:   ['#FFB3E8','#FF69B4','#E040FB','#B39DDB','#FFFFFF'],
+    party:    ['#FF4B8A','#4BFF91','#FFE500','#4B9BFF','#FF6B6B','#FFFFFF'],
+    neon:     ['#00F5FF','#BF00FF','#FF00AA','#80FF80','#FFFFFF'],
+    vintage:  ['#F4A7B9','#C2185B','#FFD6E0','#E91E63','#FFFFFF'],
+    midnight: ['#90E0EF','#0096C7','#CAF0F8','#48CAE4','#FFFFFF'],
+    tropical: ['#FFD166','#06D6A0','#FF6B6B','#FFE500','#FFFFFF'],
+    galaxy:   ['#C77DFF','#7B2FBE','#E0AAFF','#9D4EDD','#FFFFFF']
   };
 
   /**

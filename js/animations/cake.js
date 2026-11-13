@@ -10,10 +10,14 @@ window.MianGlow.animations = window.MianGlow.animations || {};
 window.MianGlow.animations.Cake = (function () {
 
   var THEME_COLORS = {
-    golden: { cake: '#8B4513', frosting: '#FFD700', candle: '#FF6B6B', flame: '#FFD700', plate: '#D4A017' },
-    dreamy:  { cake: '#9B4F7A', frosting: '#FFB3E8', candle: '#E040FB', flame: '#FFB3E8', plate: '#FF69B4' },
-    party:   { cake: '#2E5B2E', frosting: '#80FF80', candle: '#FF4B8A', flame: '#FFE500', plate: '#4BFF91' },
-    neon:    { cake: '#1A003D', frosting: '#00F5FF', candle: '#BF00FF', flame: '#00F5FF', plate: '#FF00AA' }
+    golden:   { cake: '#8B4513', frosting: '#FFD700', candle: '#FF6B6B', flame: '#FFD700', plate: '#D4A017' },
+    dreamy:   { cake: '#9B4F7A', frosting: '#FFB3E8', candle: '#E040FB', flame: '#FFB3E8', plate: '#FF69B4' },
+    party:    { cake: '#2E5B2E', frosting: '#80FF80', candle: '#FF4B8A', flame: '#FFE500', plate: '#4BFF91' },
+    neon:     { cake: '#1A003D', frosting: '#00F5FF', candle: '#BF00FF', flame: '#00F5FF', plate: '#FF00AA' },
+    vintage:  { cake: '#7B1A1A', frosting: '#F4A7B9', candle: '#C2185B', flame: '#FFD6E0', plate: '#C2185B' },
+    midnight: { cake: '#001233', frosting: '#90E0EF', candle: '#0096C7', flame: '#CAF0F8', plate: '#0096C7' },
+    tropical: { cake: '#1A3D2A', frosting: '#FFD166', candle: '#06D6A0', flame: '#FFE500', plate: '#06D6A0' },
+    galaxy:   { cake: '#05003D', frosting: '#C77DFF', candle: '#7B2FBE', flame: '#E0AAFF', plate: '#7B2FBE' }
   };
 
   /**

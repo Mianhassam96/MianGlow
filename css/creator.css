@@ -260,6 +260,10 @@
   gap: var(--space-4);
 }
 
+@media (min-width: 700px) {
+  .theme-picker { grid-template-columns: repeat(4, 1fr); }
+}
+
 .theme-option {
   position: relative;
   cursor: pointer;
@@ -757,3 +761,34 @@
   .step-dot-label { display: none; }
   .step-nav .btn { min-width: 100px; font-size: var(--text-sm); }
 }
+
+/* ---- New theme option cards ---- */
+.theme-option.vintage .theme-option-card {
+  background: linear-gradient(145deg, #120808, #2e1515);
+}
+.theme-option.midnight .theme-option-card {
+  background: linear-gradient(145deg, #000814, #023e8a);
+}
+.theme-option.tropical .theme-option-card {
+  background: linear-gradient(145deg, #0a1a0a, #1a3d2a);
+}
+.theme-option.galaxy .theme-option-card {
+  background: linear-gradient(145deg, #02001a, #0d0066);
+}
+
+.theme-option.vintage .theme-option-name  { color: #F4A7B9; }
+.theme-option.midnight .theme-option-name { color: #90E0EF; }
+.theme-option.tropical .theme-option-name { color: #FFD166; }
+.theme-option.galaxy .theme-option-name   { color: #C77DFF; }
+
+/* New theme preview screen backgrounds */
+.preview-screen.theme-vintage  { background: linear-gradient(160deg, #120808, #1e0e0e, #2e1515); }
+.preview-screen.theme-midnight { background: linear-gradient(160deg, #000814, #001233, #023e8a); }
+.preview-screen.theme-tropical { background: linear-gradient(160deg, #0a1a0a, #0d2b1a, #1a3d2a); }
+.preview-screen.theme-galaxy   { background: linear-gradient(160deg, #02001a, #05003d, #0d0066); }
+
+/* New theme name colours in preview */
+.preview-name.theme-vintage  { color: #F4A7B9; text-shadow: 0 0 20px rgba(194,24,91,0.6); }
+.preview-name.theme-midnight { color: #90E0EF; text-shadow: 0 0 20px rgba(0,150,199,0.6); }
+.preview-name.theme-tropical { background: linear-gradient(135deg,#FFD166,#06D6A0); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.preview-name.theme-galaxy   { color: #C77DFF; text-shadow: 0 0 20px rgba(123,47,190,0.7); }

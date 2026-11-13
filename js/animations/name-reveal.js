@@ -30,8 +30,15 @@ window.MianGlow.animations.NameReveal = (function () {
 
   /* Theme colour maps */
   var THEME_COLORS = {
-    golden: { primary: '#FFD700', secondary: '#D4A017', glow: 'rgba(212,160,23,', text: '#FFF8F0' },
-    dreamy:  { primary: '#FFB3E8', secondary: '#FF69B4', glow: 'rgba(255,105,180,', text: '#FFF0FF' },
+    golden:   { primary: '#FFD700', secondary: '#D4A017', glow: 'rgba(212,160,23,', text: '#FFF8F0' },
+    dreamy:   { primary: '#FFB3E8', secondary: '#FF69B4', glow: 'rgba(255,105,180,', text: '#FFF0FF' },
+    party:    { primary: '#FFE500', secondary: '#FF4B8A', glow: 'rgba(255,229,0,',   text: '#FFFFFF' },
+    neon:     { primary: '#00F5FF', secondary: '#BF00FF', glow: 'rgba(0,245,255,',   text: '#E0FFFF' },
+    vintage:  { primary: '#F4A7B9', secondary: '#C2185B', glow: 'rgba(194,24,91,',   text: '#FFF0F3' },
+    midnight: { primary: '#90E0EF', secondary: '#0096C7', glow: 'rgba(0,150,199,',   text: '#E0FBFF' },
+    tropical: { primary: '#FFD166', secondary: '#06D6A0', glow: 'rgba(6,214,160,',   text: '#FFFDE7' },
+    galaxy:   { primary: '#C77DFF', secondary: '#7B2FBE', glow: 'rgba(123,47,190,',  text: '#F3EEFF' }
+  };
     party:   { primary: '#FFE500', secondary: '#FF4B8A', glow: 'rgba(255,229,0,',   text: '#FFFFFF' },
     neon:    { primary: '#00F5FF', secondary: '#BF00FF', glow: 'rgba(0,245,255,',   text: '#E0FFFF' }
   };

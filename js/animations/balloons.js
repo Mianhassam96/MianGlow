@@ -10,10 +10,14 @@ window.MianGlow.animations = window.MianGlow.animations || {};
 window.MianGlow.animations.Balloons = (function () {
 
   var THEME_BALLOONS = {
-    golden: ['🎈','🎈','🎀','🌟','✨'],
-    dreamy:  ['🎈','💖','🎀','💜','🌸'],
-    party:   ['🎈','🎊','🎉','🎈','🌈'],
-    neon:    ['💜','🎆','⚡','🔵','🟣']
+    golden:   ['🎈','🎈','🎀','🌟','✨'],
+    dreamy:   ['🎈','💖','🎀','💜','🌸'],
+    party:    ['🎈','🎊','🎉','🎈','🌈'],
+    neon:     ['💜','🎆','⚡','🔵','🟣'],
+    vintage:  ['🌹','🎀','🌷','💕','🎈'],
+    midnight: ['🌊','💙','⭐','🌙','🎈'],
+    tropical: ['🌴','🌺','🌈','🎈','🍍'],
+    galaxy:   ['🌌','⭐','💫','🔮','🌠']
   };
 
   /**

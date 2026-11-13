@@ -20,10 +20,14 @@ window.MianGlow.generateDownload = function (state) {
 
   /* Theme-specific colours embedded in download */
   var THEMES = {
-    golden: { bg: 'linear-gradient(160deg,#0a0800,#1a1200,#2d2000)', name: '#FFD700', glow: 'rgba(212,160,23,.6)', msg: 'rgba(255,248,240,.85)', cake: '🎂', accent: '#D4A017' },
-    dreamy:  { bg: 'linear-gradient(160deg,#0f0a1a,#1a0d1a,#2d1a35)', name: '#FFB3E8', glow: 'rgba(255,105,180,.6)', msg: 'rgba(255,240,255,.85)', cake: '🎀', accent: '#FF69B4' },
-    party:   { bg: 'linear-gradient(160deg,#0a0a15,#0d0d20,#1a1a35)', name: '#FFE500', glow: 'rgba(255,229,0,.6)',   msg: 'rgba(255,255,255,.85)', cake: '🎊', accent: '#FF4B8A' },
-    neon:    { bg: 'linear-gradient(160deg,#060012,#0d001a,#1a003d)', name: '#00F5FF', glow: 'rgba(0,245,255,.7)',  msg: 'rgba(224,255,255,.85)', cake: '⚡', accent: '#BF00FF' }
+    golden:   { bg: 'linear-gradient(160deg,#0a0800,#1a1200,#2d2000)', name: '#FFD700', glow: 'rgba(212,160,23,.6)', msg: 'rgba(255,248,240,.85)', cake: '🎂', accent: '#D4A017' },
+    dreamy:   { bg: 'linear-gradient(160deg,#0f0a1a,#1a0d1a,#2d1a35)', name: '#FFB3E8', glow: 'rgba(255,105,180,.6)', msg: 'rgba(255,240,255,.85)', cake: '🎀', accent: '#FF69B4' },
+    party:    { bg: 'linear-gradient(160deg,#0a0a15,#0d0d20,#1a1a35)', name: '#FFE500', glow: 'rgba(255,229,0,.6)',   msg: 'rgba(255,255,255,.85)', cake: '🎊', accent: '#FF4B8A' },
+    neon:     { bg: 'linear-gradient(160deg,#060012,#0d001a,#1a003d)', name: '#00F5FF', glow: 'rgba(0,245,255,.7)',  msg: 'rgba(224,255,255,.85)', cake: '⚡', accent: '#BF00FF' },
+    vintage:  { bg: 'linear-gradient(160deg,#120808,#1e0e0e,#2e1515)', name: '#F4A7B9', glow: 'rgba(194,24,91,.6)', msg: 'rgba(255,240,243,.85)', cake: '🌹', accent: '#C2185B' },
+    midnight: { bg: 'linear-gradient(160deg,#000814,#001233,#023e8a)', name: '#90E0EF', glow: 'rgba(0,150,199,.6)', msg: 'rgba(224,251,255,.85)', cake: '🌊', accent: '#0096C7' },
+    tropical: { bg: 'linear-gradient(160deg,#0a1a0a,#0d2b1a,#1a3d2a)', name: '#FFD166', glow: 'rgba(6,214,160,.6)', msg: 'rgba(255,253,231,.85)', cake: '🌴', accent: '#06D6A0' },
+    galaxy:   { bg: 'linear-gradient(160deg,#02001a,#05003d,#0d0066)', name: '#C77DFF', glow: 'rgba(123,47,190,.7)', msg: 'rgba(243,238,255,.85)', cake: '🌌', accent: '#7B2FBE' }
   };
   var t = THEMES[theme] || THEMES.golden;
 
@@ -39,10 +43,14 @@ window.MianGlow.generateDownload = function (state) {
 
   /* Palette for confetti */
   var PALETTES = {
-    golden: ["'#FFD700'","'#D4A017'","'#FF6B6B'","'#4B9BFF'","'#FFF8F0'"],
-    dreamy:  ["'#FFB3E8'","'#FF69B4'","'#E040FB'","'#FFD700'","'#FFF0FF'"],
-    party:   ["'#FF4B8A'","'#4BFF91'","'#FFE500'","'#4B9BFF'","'#FF6B6B'"],
-    neon:    ["'#00F5FF'","'#BF00FF'","'#FF00AA'","'#80FF80'","'#E0FFFF'"]
+    golden:   ["'#FFD700'","'#D4A017'","'#FF6B6B'","'#4B9BFF'","'#FFF8F0'"],
+    dreamy:   ["'#FFB3E8'","'#FF69B4'","'#E040FB'","'#FFD700'","'#FFF0FF'"],
+    party:    ["'#FF4B8A'","'#4BFF91'","'#FFE500'","'#4B9BFF'","'#FF6B6B'"],
+    neon:     ["'#00F5FF'","'#BF00FF'","'#FF00AA'","'#80FF80'","'#E0FFFF'"],
+    vintage:  ["'#F4A7B9'","'#C2185B'","'#FFD6E0'","'#E91E63'","'#FFFFFF'"],
+    midnight: ["'#90E0EF'","'#0096C7'","'#CAF0F8'","'#48CAE4'","'#FFFFFF'"],
+    tropical: ["'#FFD166'","'#06D6A0'","'#FF6B6B'","'#FFE500'","'#FFFFFF'"],
+    galaxy:   ["'#C77DFF'","'#7B2FBE'","'#E0AAFF'","'#9D4EDD'","'#FFFFFF'"]
   };
   var palette = PALETTES[theme] || PALETTES.golden;
 

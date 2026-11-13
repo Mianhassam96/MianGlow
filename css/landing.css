@@ -903,3 +903,31 @@
   .hero-actions .btn { width: 100%; }
   .demo-input-row { flex-direction: column; }
 }
+
+/* ---- New theme card backgrounds (Phase 7) ---- */
+.theme-card.vintage {
+  background: linear-gradient(160deg, #120808, #1e0e0e, #2e1515);
+  box-shadow: 0 0 40px rgba(194,24,91,0.2);
+}
+.theme-card.midnight {
+  background: linear-gradient(160deg, #000814, #001233, #023e8a);
+  box-shadow: 0 0 40px rgba(0,150,199,0.2);
+}
+.theme-card.tropical {
+  background: linear-gradient(160deg, #0a1a0a, #0d2b1a, #1a3d2a);
+  box-shadow: 0 0 40px rgba(6,214,160,0.15);
+}
+.theme-card.galaxy {
+  background: linear-gradient(160deg, #02001a, #05003d, #0d0066);
+  box-shadow: 0 0 40px rgba(123,47,190,0.25);
+}
+
+.theme-card.vintage .theme-preview h3  { color: #F4A7B9; }
+.theme-card.midnight .theme-preview h3 { color: #90E0EF; }
+.theme-card.tropical .theme-preview h3 { color: #FFD166; }
+.theme-card.galaxy .theme-preview h3   { color: #C77DFF; }
+
+/* Make grid 4-column on wide, 2-column on tablet for 8 themes */
+@media (min-width: 1025px) {
+  .themes-grid { grid-template-columns: repeat(4, 1fr); }
+}

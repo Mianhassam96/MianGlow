@@ -51,8 +51,7 @@ window.MianGlow.deserialise = function (encoded) {
         recipient: d.r  || '',
         sender:    d.s  || '',
         message:   d.m  || '',
-        theme:     d.th || 'golden',
-        effects:   d.fx || ['confetti','balloons','cake','nameReveal'],
+        theme:     d.th || 'golden',        effects:   d.fx || ['confetti','balloons','cake','nameReveal'],
         photos:    [],            // photos not in URL
         createdAt: d.at || 0
       };

@@ -66,3 +66,67 @@
   --theme-name-shadow: 0 0 30px rgba(0,245,255,0.7), 0 0 60px rgba(191,0,255,0.4);
   --theme-cake-emoji:  ⚡;
 }
+
+/* ---- Vintage Rose ---- */
+[data-theme="vintage"] {
+  --theme-bg-from:     #120808;
+  --theme-bg-mid:      #1e0e0e;
+  --theme-bg-to:       #2e1515;
+  --theme-primary:     #F4A7B9;
+  --theme-secondary:   #C2185B;
+  --theme-accent:      #FFD6E0;
+  --theme-text:        #FFF0F3;
+  --theme-subtext:     rgba(244,167,185,0.7);
+  --theme-glow:        rgba(194,24,91,0.5);
+  --theme-particle:    #F4A7B9;
+  --theme-name-shadow: 0 0 30px rgba(244,167,185,0.7), 0 0 60px rgba(194,24,91,0.3);
+  --theme-cake-emoji:  🌹;
+}
+
+/* ---- Midnight Blue ---- */
+[data-theme="midnight"] {
+  --theme-bg-from:     #000814;
+  --theme-bg-mid:      #001233;
+  --theme-bg-to:       #023e8a;
+  --theme-primary:     #90E0EF;
+  --theme-secondary:   #0096C7;
+  --theme-accent:      #CAF0F8;
+  --theme-text:        #E0FBFF;
+  --theme-subtext:     rgba(144,224,239,0.7);
+  --theme-glow:        rgba(0,150,199,0.5);
+  --theme-particle:    #90E0EF;
+  --theme-name-shadow: 0 0 30px rgba(144,224,239,0.7), 0 0 60px rgba(0,150,199,0.3);
+  --theme-cake-emoji:  🌊;
+}
+
+/* ---- Tropical ---- */
+[data-theme="tropical"] {
+  --theme-bg-from:     #0a1a0a;
+  --theme-bg-mid:      #0d2b1a;
+  --theme-bg-to:       #1a3d2a;
+  --theme-primary:     #FFD166;
+  --theme-secondary:   #06D6A0;
+  --theme-accent:      #FF6B6B;
+  --theme-text:        #FFFDE7;
+  --theme-subtext:     rgba(255,209,102,0.7);
+  --theme-glow:        rgba(6,214,160,0.5);
+  --theme-particle:    #FFD166;
+  --theme-name-shadow: 0 0 30px rgba(255,209,102,0.7), 0 0 60px rgba(6,214,160,0.3);
+  --theme-cake-emoji:  🌴;
+}
+
+/* ---- Galaxy ---- */
+[data-theme="galaxy"] {
+  --theme-bg-from:     #02001a;
+  --theme-bg-mid:      #05003d;
+  --theme-bg-to:       #0d0066;
+  --theme-primary:     #C77DFF;
+  --theme-secondary:   #7B2FBE;
+  --theme-accent:      #E0AAFF;
+  --theme-text:        #F3EEFF;
+  --theme-subtext:     rgba(199,125,255,0.7);
+  --theme-glow:        rgba(123,47,190,0.5);
+  --theme-particle:    #C77DFF;
+  --theme-name-shadow: 0 0 30px rgba(199,125,255,0.7), 0 0 60px rgba(123,47,190,0.4);
+  --theme-cake-emoji:  🌌;
+}
