@@ -257,6 +257,10 @@
      STEP 5 — Share + Download
   ============================================================ */
   function _buildFinalStep() {
+    // Track completion
+    if (window.MianGlow.Analytics) {
+      window.MianGlow.Analytics.greetingCompleted(state.type, state.theme);
+    }
     var url = MG.buildShareURL ? MG.buildShareURL(state) : null;
     var shareInput = document.getElementById('share-link-value');
 
@@ -295,7 +299,10 @@
     var input = document.getElementById('share-link-value');
     if (!input || !input.value) return;
     var copyFn = MG.copyToClipboard || function (t) { return navigator.clipboard.writeText(t); };
-    copyFn(input.value).then(function () { _toast('✅ Link copied!'); }).catch(function () { _toast('Could not copy — select the link and copy manually.'); });
+    copyFn(input.value).then(function () {
+      _toast('✅ Link copied!');
+      if (window.MianGlow.Analytics) window.MianGlow.Analytics.greetingShared('copy', state.type);
+    }).catch(function () { _toast('Could not copy — select the link and copy manually.'); });
   });
 
   /* WhatsApp */
@@ -304,6 +311,7 @@
     var input = document.getElementById('share-link-value');
     if (!input || !input.value) return;
     if (MG.shareWhatsApp) MG.shareWhatsApp(input.value, state.recipient.trim());
+    if (window.MianGlow.Analytics) window.MianGlow.Analytics.greetingShared('whatsapp', state.type);
   });
 
   /* Native share */
@@ -312,6 +320,7 @@
     var input = document.getElementById('share-link-value');
     if (!input || !input.value) return;
     if (MG.nativeShare) MG.nativeShare(input.value, state.recipient.trim());
+    if (window.MianGlow.Analytics) window.MianGlow.Analytics.greetingShared('native', state.type);
   });
 
   /* Download */
@@ -333,6 +342,7 @@
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
         _toast('📥 Greeting downloaded!');
+        if (window.MianGlow.Analytics) window.MianGlow.Analytics.greetingDownloaded(state.type, state.theme);
       } catch (e) {
         _toast('Download failed. Please try again.');
         console.error(e);
