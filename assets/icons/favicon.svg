@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#2d2000"/>
+      <stop offset="100%" stop-color="#0a0800"/>
+    </radialGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFD700" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#FFD700" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- Background -->
+  <circle cx="32" cy="32" r="32" fill="url(#bg)"/>
+  <!-- Glow -->
+  <circle cx="32" cy="32" r="28" fill="url(#glow)"/>
+  <!-- Cake base -->
+  <rect x="12" y="36" width="40" height="16" rx="4" fill="#8B4513"/>
+  <!-- Frosting -->
+  <path d="M12 36 Q16 30 20 36 Q24 30 28 36 Q32 30 36 36 Q40 30 44 36 Q48 30 52 36 L52 40 L12 40 Z" fill="#FFD700"/>
+  <!-- Top tier -->
+  <rect x="18" y="24" width="28" height="14" rx="3" fill="#A0522D"/>
+  <path d="M18 24 Q21 19 24 24 Q27 19 30 24 Q33 19 36 24 Q39 19 42 24 Q45 19 46 24 L46 27 L18 27 Z" fill="#FFD700"/>
+  <!-- Candles -->
+  <rect x="24" y="16" width="4" height="10" rx="1" fill="#FF6B6B"/>
+  <rect x="36" y="16" width="4" height="10" rx="1" fill="#4B9BFF"/>
+  <!-- Flames -->
+  <ellipse cx="26" cy="14" rx="3" ry="4" fill="#FFD700" opacity="0.9"/>
+  <ellipse cx="26" cy="13" rx="1.5" ry="2.5" fill="#FFF5A0"/>
+  <ellipse cx="38" cy="14" rx="3" ry="4" fill="#FFD700" opacity="0.9"/>
+  <ellipse cx="38" cy="13" rx="1.5" ry="2.5" fill="#FFF5A0"/>
+  <!-- Stars -->
+  <text x="6"  y="14" font-size="8" fill="#FFD700" opacity="0.8">✨</text>
+  <text x="48" y="12" font-size="7" fill="#FFD700" opacity="0.7">⭐</text>
+</svg>

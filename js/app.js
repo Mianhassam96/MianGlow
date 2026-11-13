@@ -155,3 +155,55 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     }
   });
 });
+
+/* ============================================
+   Phase 6 additions — Performance & Analytics hooks
+   ============================================ */
+
+/* ---- Lazy-load images ---- */
+(function initLazyImages() {
+  if (!('IntersectionObserver' in window)) return;
+  var imgs = document.querySelectorAll('img[loading="lazy"]');
+  imgs.forEach(function (img) {
+    img.addEventListener('load', function () { img.classList.add('loaded'); });
+    if (img.complete) img.classList.add('loaded');
+  });
+})();
+
+/* ---- Deferred Google Fonts (non-blocking) ---- */
+(function deferFonts() {
+  // Fonts are already loaded via CSS @import — this ensures the font
+  // stylesheet link uses media swap trick if added dynamically later.
+  var links = document.querySelectorAll('link[href*="fonts.googleapis.com"]');
+  links.forEach(function (link) {
+    if (!link.href.includes('display=swap')) {
+      link.href = link.href + (link.href.includes('?') ? '&' : '?') + 'display=swap';
+    }
+  });
+})();
+
+/* ---- Analytics event helpers (privacy-safe, no PII) ---- */
+window.MianGlow = window.MianGlow || {};
+window.MianGlow.track = function (eventName, params) {
+  // Fires a CustomEvent on document — connect to your analytics provider here
+  // e.g. gtag('event', eventName, params) or plausible(eventName, { props: params })
+  try {
+    document.dispatchEvent(new CustomEvent('mianglow:track', {
+      detail: { event: eventName, params: params || {} }
+    }));
+  } catch (e) {}
+};
+
+/* Track CTA clicks */
+(function trackCTAs() {
+  document.querySelectorAll('a[href="create.html"], a[href*="create.html"]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      window.MianGlow.track('cta_click', { source: 'landing' });
+    });
+  });
+})();
+
+/* ---- Performance mark ---- */
+if (window.performance && window.performance.mark) {
+  window.performance.mark('mianglow-app-ready');
+}

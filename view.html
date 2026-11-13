@@ -3,9 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="You have a birthday surprise waiting for you on MianGlow!" />
-  <title>✨ You have a birthday surprise!</title>
 
+  <!-- SEO — title/description updated dynamically by viewer.js -->
+  <title>✨ You have a birthday surprise!</title>
+  <meta name="description" content="Someone created a personalized animated birthday surprise for you on MianGlow. Tap to open!" />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Open Graph (best-effort — real data is in URL hash, not crawlable) -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="🎂 You have a birthday surprise!" />
+  <meta property="og:description" content="Someone made a beautiful animated birthday experience just for you on MianGlow." />
+  <meta property="og:image"       content="https://mianhassam96.github.io/MianGlow/assets/images/og-image.png" />
+
+  <!-- PWA -->
+  <meta name="theme-color" content="#D4A017" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
+
+  <!-- Styles -->
   <link rel="stylesheet" href="css/tokens.css" />
   <link rel="stylesheet" href="css/global.css" />
   <link rel="stylesheet" href="css/animations.css" />
