@@ -1,7 +1,7 @@
 /* ============================================
-   MianGlow — viewer.js  (Phase 3)
+   MianGlow — viewer.js  (Phase 3 + Step 2 music)
    Recipient birthday experience
-   Uses: NameReveal, Cake, Confetti, Balloons, Fireworks
+   Uses: NameReveal, Cake, Confetti, Balloons, Fireworks, Music
    ============================================ */
 'use strict';
 
@@ -42,6 +42,7 @@
   var balloonsAnim  = null;
   var cakeAnim      = null;
   var nameRevealAnim = null;
+  var musicAnim      = null;
 
   var effects = state.effects || [];
 
@@ -88,6 +89,7 @@
     _show('scene-main');
     _initConfetti();
     _initFireworks();
+    _startMusic();  // Step 2: music starts on first user gesture
 
     // 1. Name reveal (canvas animation)
     setTimeout(_doNameReveal, 400);
@@ -193,6 +195,40 @@
   }
 
   /* ============================================================
+     MUSIC (Step 2)
+  ============================================================ */
+  function _startMusic() {
+    if (!window.MianGlow.Music) return;
+    musicAnim = new window.MianGlow.Music(state.theme, true);
+    if (!musicAnim.isSupported()) return;
+    musicAnim.start();
+    _buildMuteButton();
+  }
+
+  function _buildMuteButton() {
+    var btn = document.getElementById('btn-mute');
+    if (!btn) {
+      btn = document.createElement('button');
+      btn.id = 'btn-mute';
+      btn.setAttribute('aria-label', 'Mute music');
+      btn.style.cssText =
+        'position:fixed;bottom:24px;right:24px;z-index:999;' +
+        'width:44px;height:44px;border-radius:50%;' +
+        'background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.2);' +
+        'color:#fff;font-size:1.2rem;cursor:pointer;' +
+        'display:flex;align-items:center;justify-content:center;' +
+        'backdrop-filter:blur(8px);transition:all 0.2s;';
+      btn.textContent = '🔊';
+      document.body.appendChild(btn);
+    }
+    btn.addEventListener('click', function () {
+      var on = musicAnim.toggle();
+      btn.textContent  = on ? '🔊' : '🔇';
+      btn.setAttribute('aria-label', on ? 'Mute music' : 'Unmute music');
+    });
+  }
+
+  /* ============================================================
      5. FIREWORKS init
   ============================================================ */
   function _initFireworks() {
@@ -269,6 +305,7 @@
       if (nameRevealAnim) nameRevealAnim.stop();
       if (confettiAnim)   confettiAnim.clear();
       if (fireworksAnim)  fireworksAnim.clear();
+      if (musicAnim)      musicAnim.stop();
 
       // Reset DOM
       var ids = ['cake-wrap', 'message-wrap', 'photos-wrap', 'finale-wrap'];
