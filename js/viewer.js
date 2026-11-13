@@ -18,8 +18,10 @@
     return;
   }
 
-  /* ---- Page title ---- */
-  document.title = '🎂 Happy Birthday, ' + state.recipient + '! ✨';
+  /* ---- Page title (celebration-aware) ---- */
+  var cel = window.MianGlow.getCelebration ? window.MianGlow.getCelebration(state.type) : null;
+  var titleTpl = cel ? cel.titleTpl : 'Happy Birthday, {name}! ✨';
+  document.title = titleTpl.replace('{name}', state.recipient);
 
   /* ---- Apply theme to main scene ---- */
   var sceneMain = document.getElementById('scene-main');

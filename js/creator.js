@@ -8,6 +8,24 @@
 
   var MG      = window.MianGlow;
   var state   = MG.defaultState();
+
+  /* ---- Read celebration type from URL ---- */
+  var urlParams = new URLSearchParams(window.location.search);
+  var celType   = urlParams.get('type') || 'birthday';
+  state.type    = celType;
+
+  /* Apply celebration defaults (theme, effects) */
+  if (window.MianGlow.applyDefaults) window.MianGlow.applyDefaults(state);
+
+  /* Update wizard heading with celebration name */
+  var cel = window.MianGlow.getCelebration ? window.MianGlow.getCelebration(celType) : null;
+  if (cel) {
+    var step1h = document.getElementById('step1-heading');
+    if (step1h) step1h.textContent = 'Who is this for? ' + cel.emoji;
+    var topbarTitle = document.querySelector('.topbar-right span');
+    if (topbarTitle) topbarTitle.textContent = cel.label + ' Creator';
+    document.title = 'MianGlow — Create a ' + cel.label + ' Surprise ✨';
+  }
   var current = 1;
   var TOTAL   = 5;
 

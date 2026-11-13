@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MianGlow — Choose Your Celebration ✨</title>
+  <meta name="description" content="Create a personalized animated surprise for any occasion — birthday, anniversary, graduation, Eid, Christmas and more." />
+  <link rel="canonical" href="https://mianhassam96.github.io/MianGlow/celebrate.html" />
+  <meta property="og:title"       content="MianGlow — Choose Your Celebration ✨" />
+  <meta property="og:description" content="Birthdays, anniversaries, graduations, Eid, Christmas — make any moment glow." />
+  <meta property="og:image"       content="https://mianhassam96.github.io/MianGlow/assets/images/og-image.png" />
+  <meta name="theme-color" content="#D4A017" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <style>
+    .celebrate-page {
+      min-height: 100vh;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(212,160,23,0.14) 0%, transparent 60%),
+        var(--color-midnight);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: var(--space-16) var(--space-6) var(--space-20);
+    }
+    .back-link {
+      position: fixed;
+      top: var(--space-5);
+      left: var(--space-6);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      color: rgba(255,255,255,0.5);
+      transition: color var(--transition-fast);
+      z-index: var(--z-nav);
+    }
+    .back-link:hover { color: var(--color-gold); }
+    .celebrate-header {
+      text-align: center;
+      max-width: 600px;
+      margin-bottom: var(--space-16);
+      animation: fadeInUp 0.6s ease both;
+    }
+    .celebrate-header .badge {
+      display: inline-block;
+      background: rgba(212,160,23,0.1);
+      border: 1px solid rgba(212,160,23,0.3);
+      border-radius: var(--radius-full);
+      padding: var(--space-2) var(--space-5);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: var(--space-5);
+    }
+    .celebrate-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
+      font-weight: 700;
+      margin-bottom: var(--space-4);
+    }
+    .celebrate-header p {
+      color: rgba(255,255,255,0.55);
+      font-size: var(--text-lg);
+    }
+    .celebrations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-5);
+      max-width: 900px;
+      width: 100%;
+    }
+    .cel-card {
+      background: var(--color-dark-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8) var(--space-6);
+      text-align: center;
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--color-white);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-4);
+      transition: all var(--transition-spring);
+      animation: fadeInUp 0.6s ease both;
+    }
+    .cel-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      border-color: rgba(212,160,23,0.5);
+      box-shadow: 0 0 32px rgba(212,160,23,0.2);
+    }
+    .cel-card:nth-child(1) { animation-delay: 0.05s; }
+    .cel-card:nth-child(2) { animation-delay: 0.10s; }
+    .cel-card:nth-child(3) { animation-delay: 0.15s; }
+    .cel-card:nth-child(4) { animation-delay: 0.20s; }
+    .cel-card:nth-child(5) { animation-delay: 0.25s; }
+    .cel-emoji {
+      font-size: 3.5rem;
+      filter: drop-shadow(0 0 16px rgba(212,160,23,0.4));
+      animation: bounce 2.5s ease-in-out infinite;
+    }
+    .cel-card:nth-child(2) .cel-emoji { animation-delay: 0.3s; }
+    .cel-card:nth-child(3) .cel-emoji { animation-delay: 0.6s; }
+    .cel-card:nth-child(4) .cel-emoji { animation-delay: 0.9s; }
+    .cel-card:nth-child(5) .cel-emoji { animation-delay: 1.2s; }
+    .cel-name {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 700;
+    }
+    .cel-desc {
+      font-size: var(--text-sm);
+      color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+    }
+    .cel-btn {
+      margin-top: var(--space-2);
+      padding: var(--space-2) var(--space-6);
+      background: rgba(212,160,23,0.12);
+      border: 1px solid rgba(212,160,23,0.35);
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--color-gold);
+      transition: all var(--transition-base);
+    }
+    .cel-card:hover .cel-btn {
+      background: var(--color-gold);
+      color: var(--color-midnight);
+    }
+    @keyframes bounce {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-10px); }
+    }
+    @keyframes fadeInUp {
+      from { opacity:0; transform: translateY(20px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" class="back-link" aria-label="Back to MianGlow home">
+    ← <span class="text-gold" style="-webkit-text-fill-color:unset;color:inherit;">MianGlow</span>
+  </a>
+
+  <div class="celebrate-page">
+
+    <div class="celebrate-header">
+      <div class="badge">✨ All Celebrations</div>
+      <h1>What would you like to <span class="text-gold">celebrate?</span></h1>
+      <p>Pick an occasion and we'll set up the perfect theme, animations and defaults for you.</p>
+    </div>
+
+    <div class="celebrations-grid">
+
+      <a href="create.html?type=birthday" class="cel-card" aria-label="Create a birthday surprise">
+        <div class="cel-emoji">🎂</div>
+        <div class="cel-name">Birthday</div>
+        <div class="cel-desc">Personalized animated birthday experience with cake and confetti.</div>
+        <div class="cel-btn">Create →</div>
+      </a>
+
+      <a href="create.html?type=anniversary" class="cel-card" aria-label="Create an anniversary surprise">
+        <div class="cel-emoji">💑</div>
+        <div class="cel-name">Anniversary</div>
+        <div class="cel-desc">Romantic soft theme with hearts and floating balloons.</div>
+        <div class="cel-btn">Create →</div>
+      </a>
+
+      <a href="create.html?type=graduation" class="cel-card" aria-label="Create a graduation surprise">
+        <div class="cel-emoji">🎓</div>
+        <div class="cel-name">Graduation</div>
+        <div class="cel-desc">Cinematic golden theme with fireworks and confetti.</div>
+        <div class="cel-btn">Create →</div>
+      </a>
+
+      <a href="create.html?type=eid" class="cel-card" aria-label="Create an Eid Mubarak surprise">
+        <div class="cel-emoji">🌙</div>
+        <div class="cel-name">Eid Mubarak</div>
+        <div class="cel-desc">Galaxy theme with cosmic animations and warm wishes.</div>
+        <div class="cel-btn">Create →</div>
+      </a>
+
+      <a href="create.html?type=christmas" class="cel-card" aria-label="Create a Christmas surprise">
+        <div class="cel-emoji">🎄</div>
+        <div class="cel-name">Christmas</div>
+        <div class="cel-desc">Vintage rose theme with warm festive animations.</div>
+        <div class="cel-btn">Create →</div>
+      </a>
+
+    </div>
+  </div>
+
+  <script src="js/data-model.js"></script>
+  <script src="js/celebrations.js"></script>
+</body>
+</html>
