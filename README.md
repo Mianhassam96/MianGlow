@@ -138,7 +138,7 @@ MianGlow/
 
 ## 👤 Author
 
-Built with ❤️ by [MultiMian](https://github.com/Mianhassam96)
+Built with ❤️ by [MultiMian](https://multimian.com)
 
 ---
 
