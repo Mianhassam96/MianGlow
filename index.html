@@ -80,13 +80,24 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <!-- Critical CSS first, then fonts async -->
+  <!-- Styles -->
   <link rel="stylesheet" href="css/tokens.css" />
   <link rel="stylesheet" href="css/global.css" />
   <link rel="stylesheet" href="css/animations.css" />
   <link rel="stylesheet" href="css/landing.css" />
+  <link rel="stylesheet" href="css/polish.css" />
 </head>
 <body class="bg-gradient-radial">
+
+  <!-- LOADING SCREEN -->
+  <div id="mg-loader" role="status" aria-label="Loading MianGlow">
+    <div class="loader-logo">
+      <span class="loader-logo-icon">✨</span>
+      <span class="loader-logo-text">MianGlow</span>
+    </div>
+    <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+    <span class="loader-tagline">Make their moment glow</span>
+  </div>
 
   <!-- ============================================================
        NAV
@@ -247,6 +258,74 @@
           <span class="demo-sparkles" aria-hidden="true">✨</span>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SHOWCASE — Live animated phone preview
+  ============================================================ -->
+  <section class="showcase-section" aria-labelledby="showcase-heading">
+    <div class="showcase-inner">
+
+      <!-- Left: text -->
+      <div class="showcase-text">
+        <div class="section-label reveal">Watch it glow</div>
+        <h2 id="showcase-heading" class="reveal">
+          Every surprise is <span class="text-gold">alive.</span>
+        </h2>
+        <p class="reveal">
+          The recipient opens a link — not a static image. Names glow, cakes animate, confetti bursts across the screen. It feels like opening a present.
+        </p>
+        <ul class="showcase-features reveal">
+          <li>Cinematic name reveal with particle glow</li>
+          <li>Animated cake — tap to blow out the candles</li>
+          <li>Physics confetti, floating balloons, fireworks</li>
+          <li>Theme-matched background music</li>
+          <li>Your photos in an elegant gallery</li>
+          <li>Works in WhatsApp, iMessage and every browser</li>
+        </ul>
+        <a href="celebrate.html" class="btn btn-primary reveal delay-200">
+          ✨ Create Your Surprise
+        </a>
+      </div>
+
+      <!-- Right: live phone mockup -->
+      <div class="showcase-phone-wrap">
+        <!-- Glow rings -->
+        <div class="showcase-glow-ring"></div>
+        <div class="showcase-glow-ring"></div>
+        <div class="showcase-glow-ring"></div>
+
+        <div class="showcase-phone">
+          <div class="showcase-phone-notch"></div>
+          <div class="showcase-phone-screen">
+            <canvas id="showcase-canvas" aria-hidden="true"></canvas>
+            <div class="showcase-phone-content">
+              <span class="sc-label">Happy Birthday,</span>
+              <div class="sc-cake" aria-hidden="true">🎂</div>
+              <div class="sc-name" id="sc-name" aria-live="polite">Alex</div>
+              <p class="sc-msg">Wishing you the most amazing day filled with joy ✨</p>
+              <div class="sc-effects">
+                <span class="sc-fx-pill">✨ Name Reveal</span>
+                <span class="sc-fx-pill">🎉 Confetti</span>
+                <span class="sc-fx-pill">🎂 Cake</span>
+              </div>
+              <a href="celebrate.html" class="sc-cta">Create yours →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Theme switcher pills -->
+        <div class="showcase-themes" aria-label="Preview themes">
+          <button class="sc-theme-btn active" title="Golden Celebration" aria-label="Golden Celebration theme">🏆</button>
+          <button class="sc-theme-btn" title="Dreamy Birthday"    aria-label="Dreamy Birthday theme">💖</button>
+          <button class="sc-theme-btn" title="Party Blast"        aria-label="Party Blast theme">🎊</button>
+          <button class="sc-theme-btn" title="Neon Night"         aria-label="Neon Night theme">💜</button>
+          <button class="sc-theme-btn" title="Galaxy"             aria-label="Galaxy theme">🌌</button>
+          <button class="sc-theme-btn" title="Tropical"           aria-label="Tropical theme">🌴</button>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -556,5 +635,6 @@
   <!-- <script defer data-domain="YOUR-DOMAIN" src="https://plausible.io/js/script.js"></script> -->
   <script src="js/analytics.js" defer></script>
   <script src="js/app.js" defer></script>
+  <script src="js/polish.js" defer></script>
 </body>
 </html>

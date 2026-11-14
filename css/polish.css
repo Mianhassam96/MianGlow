@@ -1,0 +1,239 @@
+/* MianGlow — polish.css: loader, transitions, preview section */
+
+/* ---- 1. LOADING SCREEN ---- */
+#mg-loader {
+  position: fixed; inset: 0; z-index: 99999;
+  background: #0A0A0F;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 1.5rem;
+  transition: opacity .5s ease, visibility .5s ease;
+}
+#mg-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.loader-logo {
+  display: flex; align-items: center; gap: .75rem;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2rem; font-weight: 700;
+  animation: ldrPulse 1.6s ease-in-out infinite;
+}
+.loader-logo-icon { font-size: 2.5rem; filter: drop-shadow(0 0 16px rgba(212,160,23,.7)); }
+.loader-logo-text {
+  background: linear-gradient(135deg, #D4A017, #FFD700, #F7E7CE);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.loader-bar-wrap {
+  width: 160px; height: 3px;
+  background: rgba(255,255,255,.08); border-radius: 9999px; overflow: hidden;
+}
+.loader-bar {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, #D4A017, #FFD700); border-radius: 9999px;
+  animation: ldrFill .9s cubic-bezier(.4,0,.2,1) forwards;
+  box-shadow: 0 0 10px rgba(212,160,23,.5);
+}
+.loader-tagline { font-size: .875rem; color: rgba(255,255,255,.3); letter-spacing: .08em; }
+@keyframes ldrPulse { 0%,100%{opacity:1;transform:scale(1)}50%{opacity:.8;transform:scale(1.03)} }
+@keyframes ldrFill  { 0%{width:0%} 100%{width:100%} }
+
+/* ---- 2. PAGE TRANSITIONS ---- */
+.page-out {
+  animation: pageOut .3s ease forwards;
+}
+@keyframes pageOut {
+  to { opacity: 0; transform: translateY(-8px); }
+}
+body {
+  animation: pageIn .45s ease both;
+}
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- 3. PREVIEW / SHOWCASE SECTION ---- */
+.showcase-section {
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+}
+.showcase-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(212,160,23,.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+.showcase-inner {
+  max-width: 1200px; margin: 0 auto;
+  padding: 0 1.5rem;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4rem; align-items: center;
+}
+.showcase-text { position: relative; z-index: 1; }
+.showcase-text .section-label { margin-bottom: 1rem; }
+.showcase-text h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.875rem, 4vw, 3rem);
+  font-weight: 700; line-height: 1.2;
+  margin-bottom: 1.25rem;
+}
+.showcase-text p {
+  color: rgba(255,255,255,.6); font-size: 1.1rem;
+  line-height: 1.75; margin-bottom: 2rem; max-width: 460px;
+}
+.showcase-features {
+  list-style: none; display: flex;
+  flex-direction: column; gap: .75rem; margin-bottom: 2.5rem;
+}
+.showcase-features li {
+  display: flex; align-items: center; gap: .75rem;
+  font-size: .9375rem; color: rgba(255,255,255,.75);
+}
+.showcase-features li::before {
+  content: '✓';
+  width: 22px; height: 22px; border-radius: 50%;
+  background: rgba(212,160,23,.15); border: 1px solid rgba(212,160,23,.35);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .7rem; font-weight: 700; color: #FFD700;
+  flex-shrink: 0;
+}
+
+/* Phone mockup for showcase */
+.showcase-phone-wrap {
+  position: relative; display: flex;
+  align-items: center; justify-content: center;
+}
+.showcase-phone {
+  width: 280px; max-width: 100%;
+  background: #1A1A28;
+  border: 2px solid rgba(212,160,23,.3);
+  border-radius: 2.25rem;
+  box-shadow: 0 0 60px rgba(212,160,23,.18), 0 24px 64px rgba(0,0,0,.5);
+  overflow: hidden; position: relative;
+  animation: phoneFloat 5s ease-in-out infinite;
+}
+@keyframes phoneFloat {
+  0%,100% { transform: translateY(0) rotate(-.5deg); }
+  50%      { transform: translateY(-14px) rotate(.5deg); }
+}
+.showcase-phone-notch {
+  width: 60px; height: 6px; background: rgba(255,255,255,.08);
+  border-radius: 9999px; margin: 12px auto 0;
+}
+.showcase-phone-screen {
+  min-height: 440px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 1.1rem; padding: 1.5rem 1.25rem;
+  text-align: center; position: relative;
+  background: linear-gradient(160deg, #0a0800, #1a1200, #2d2000);
+}
+
+/* Animated canvas confetti inside showcase */
+#showcase-canvas {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  pointer-events: none; z-index: 0;
+}
+.showcase-phone-content {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 1rem;
+}
+.sc-label {
+  font-size: .75rem; color: rgba(255,255,255,.45);
+  letter-spacing: .06em; text-transform: uppercase;
+}
+.sc-cake {
+  font-size: 3.5rem;
+  filter: drop-shadow(0 0 20px rgba(212,160,23,.5));
+  animation: scCakeBounce 2s ease-in-out infinite;
+}
+@keyframes scCakeBounce { 0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)} }
+.sc-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2rem; font-weight: 700;
+  background: linear-gradient(135deg, #D4A017, #FFD700, #F7E7CE);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  filter: drop-shadow(0 0 20px rgba(212,160,23,.5));
+  animation: scGlow 3s ease-in-out infinite;
+  min-height: 2.4rem;
+}
+@keyframes scGlow {
+  0%,100%{filter:drop-shadow(0 0 10px rgba(212,160,23,.4))}
+  50%{filter:drop-shadow(0 0 28px rgba(212,160,23,.8))}
+}
+.sc-msg {
+  font-size: .78rem; color: rgba(255,255,255,.65);
+  line-height: 1.6; max-width: 200px;
+}
+.sc-effects {
+  display: flex; gap: .4rem; flex-wrap: wrap; justify-content: center;
+}
+.sc-fx-pill {
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 9999px; padding: 2px 10px;
+  font-size: .65rem; color: rgba(255,255,255,.5);
+}
+.sc-cta {
+  display: inline-block;
+  background: linear-gradient(135deg, #D4A017, #FFD700);
+  color: #0A0A0F; font-weight: 700; font-size: .78rem;
+  padding: .45rem 1.2rem; border-radius: 9999px;
+  text-decoration: none; margin-top: .25rem;
+  box-shadow: 0 0 16px rgba(212,160,23,.4);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.sc-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 28px rgba(212,160,23,.65);
+}
+
+/* Theme-switcher pills below phone */
+.showcase-themes {
+  position: absolute; bottom: -48px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; gap: .5rem;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 9999px; padding: .4rem .75rem;
+  white-space: nowrap;
+}
+.sc-theme-btn {
+  font-size: 1.1rem; cursor: pointer;
+  background: none; border: none;
+  padding: .2rem .3rem; border-radius: 50%;
+  transition: transform .2s ease, background .2s ease;
+  line-height: 1;
+}
+.sc-theme-btn:hover { transform: scale(1.3); background: rgba(255,255,255,.1); }
+.sc-theme-btn.active {
+  background: rgba(212,160,23,.2);
+  box-shadow: 0 0 10px rgba(212,160,23,.4);
+}
+
+/* Glow rings behind phone */
+.showcase-glow-ring {
+  position: absolute; border-radius: 50%;
+  border: 1px solid rgba(212,160,23,.12);
+  pointer-events: none; z-index: 0;
+  animation: ringPulse 4s ease-in-out infinite;
+}
+.showcase-glow-ring:nth-child(1) { width:360px;height:360px;animation-delay:0s; }
+.showcase-glow-ring:nth-child(2) { width:460px;height:460px;animation-delay:.8s; }
+.showcase-glow-ring:nth-child(3) { width:560px;height:560px;animation-delay:1.6s; }
+@keyframes ringPulse {
+  0%,100%{opacity:.5;transform:scale(1)}
+  50%{opacity:.15;transform:scale(1.04)}
+}
+
+/* Responsive */
+@media(max-width:900px){
+  .showcase-inner { grid-template-columns:1fr; text-align:center; gap:3rem; }
+  .showcase-text p { margin:0 auto 2rem; }
+  .showcase-features { align-items:center; }
+  .showcase-phone-wrap { margin-top:3rem; }
+}
+@media(max-width:480px){
+  .showcase-phone { width:240px; }
+  .showcase-phone-screen { min-height:380px; }
+}
